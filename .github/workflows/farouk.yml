@@ -21,13 +21,13 @@ jobs:
 
       - name: Build image
         run: |
-          docker build -t FaroukAyman2023040169/myapp:latest .
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/FaroukAyman2023040169:latest .
 
       - name: Push image
         run: |
-          docker push FaroukAyman2023040169/myapp:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/FaroukAyman2023040169:latest
 
       - name: Run container
         run: |
           docker run -d -p 8080:3000 --name mycontainer \
-          FaroukAyman2023040169/myapp:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/FaroukAyman2023040169:latest
